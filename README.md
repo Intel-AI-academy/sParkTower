@@ -2,6 +2,11 @@
 
 ## Electronic Vehicle charging & parking tower
 
+## Several changes
+
+- Create issue, PR, commit templates
+- Add a bash file for set commit templates
+
 ## Participants
 
 | Member | Role |
