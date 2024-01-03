@@ -1,7 +1,7 @@
 ---
 name: general sParkTower issue template
 about: For make general github issue
-title: "[title] - body"
+title: "[TSK-number] - body"
 labels: ''
 assignees: '0419jinho'
 
