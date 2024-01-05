@@ -6,6 +6,6 @@
 
 | Member | Role |
 |----|----|
-|YuSuengKwon| Team Leader|
+|YuSueng Kwon| Team Leader|
 |KimJinho| Git manager|
 |KimEunYoung| Product Owner|
