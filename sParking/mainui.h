@@ -3,8 +3,8 @@
 
 #include <QWidget>
 #include <QStackedWidget>
-#include "usermode.h"
-#include "managermode.h"
+#include "usermodeui.h"
+#include "managermodeui.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -21,8 +21,8 @@ public:
 
 private:
     Ui::MainUI *ui;
-    UserMode *p_usermode;
-    ManagerMode *p_managerMode;
+    UserModeUI *p_usermode;
+    ManagerModeUI *p_managerMode;
 
 private slots:
     void push_usermode();
