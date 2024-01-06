@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ManagerMode</class>
- <widget class="QWidget" name="ManagerMode">
+ <class>ManagerModeUI</class>
+ <widget class="QWidget" name="ManagerModeUI">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -21,7 +21,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QPushButton" name="pPBToMain">
+          <widget class="QPushButton" name="back_button">
            <property name="maximumSize">
             <size>
              <width>100</width>
@@ -61,7 +61,7 @@
             <number>0</number>
            </property>
            <item>
-            <widget class="QLabel" name="label">
+            <widget class="QLabel" name="parking_status_label">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -80,7 +80,7 @@
               </font>
              </property>
              <property name="text">
-              <string>Paking Status</string>
+              <string>Parking Status</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -117,7 +117,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
-              <widget class="QPushButton" name="pushButton_2">
+              <widget class="QPushButton" name="garage_manager_button">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                  <horstretch>0</horstretch>

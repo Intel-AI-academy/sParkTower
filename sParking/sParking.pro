@@ -18,18 +18,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainui.cpp \
-    managermode.cpp \
-    usermode.cpp
+    managermodeui.cpp \
+    managerpasswordui.cpp \
+    usermodeui.cpp
 
 HEADERS += \
     mainui.h \
-    managermode.h \
-    usermode.h
+    managermodeui.h \
+    managerpasswordui.h \
+    usermodeui.h
 
 FORMS += \
     mainui.ui \
-    managermode.ui \
-    usermode.ui
+    managermodeui.ui \
+    managerpasswordui.ui \
+    usermodeui.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
