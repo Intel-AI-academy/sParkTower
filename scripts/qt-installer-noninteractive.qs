@@ -52,3 +52,8 @@ Controller.prototype.FinishedPageCallback = function() {
     }
     gui.clickButton(buttons.FinishButton, 1000);
 }
+
+// Add the following line to enable headless mode
+Controller.prototype.ConsoleInstallationPageCallback = function() {
+    gui.clickButton(buttons.NextButton, 1000);
+}
