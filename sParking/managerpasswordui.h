@@ -17,7 +17,7 @@ public:
 
 private:
     Ui::ManagerPasswordUI *ui;
-    ManagerPasswordUI *pManagerPasswordUI;
+
 };
 
 #endif // MANAGERPASSWORDUI_H

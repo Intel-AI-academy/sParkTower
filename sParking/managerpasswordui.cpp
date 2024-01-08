@@ -6,11 +6,6 @@ ManagerPasswordUI::ManagerPasswordUI(QWidget *parent) :
     ui(new Ui::ManagerPasswordUI)
 {
     ui->setupUi(this);
-
-//    pManagerPasswordUI = new ManagerPasswordUI();
-//    pManagerPasswordUI->show();
-
-
 }
 
 ManagerPasswordUI::~ManagerPasswordUI()

@@ -7,18 +7,18 @@ MainUI::MainUI(QWidget *parent)
 {
     ui->setupUi(this);
 
-    p_usermode = new UserMode;
-    p_managerMode = new ManagerMode;
+    p_usermode = new UserModeUI;
+    p_managerMode = new ManagerModeUI;
 
     ui->stackedWidget->insertWidget(1, p_usermode);
     ui->stackedWidget->insertWidget(2, p_managerMode);
 
 
-    connect(ui->pPUserMode, SIGNAL(clicked()), this, SLOT(push_usermode()));
-    connect(ui->pPManagerMode, SIGNAL(clicked()), this, SLOT(push_managermode()));
+    connect(ui->user_mode, SIGNAL(clicked()), this, SLOT(push_usermode()));
+    connect(ui->manager_mode, SIGNAL(clicked()), this, SLOT(push_managermode()));
 
     connect(p_usermode, SIGNAL(push_back()), this, SLOT(push_usermode_back()));
-    connect(p_managerMode, SIGNAL(push_to_main()), this, SLOT(push_managermode_back()));
+    connect(p_managerMode, SIGNAL(push_back()), this, SLOT(push_managermode_back()));
 
 }
 
