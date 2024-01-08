@@ -1,4 +1,4 @@
-name: Build sParking with Local Qt Installer
+name: Build sParking with Samba Qt Installer
 
 on:
   push:
@@ -16,10 +16,21 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Qt from Local .run file
+    - name: Install Samba Client
       run: |
-        chmod +x qt-opensource-linux-x64-5.14.2.run
-        qt-opensource-linux-x64-5.14.2r.run --script qt-installer-noninteractive.qs
+        sudo apt-get update
+        sudo apt-get install -y smbclient
+
+    - name: Download Qt Installer from Samba Share
+      run: |
+        smbclient //10.10.141.46/samba -U ${{ secrets.SMB_USERNAME }}%${{ secrets.SMB_PASSWORD }} -c 'get qt-opensource-linux-x64-5.14.2.run'
+
+    - name: Make Qt Installer Executable
+      run: chmod +x qt-opensource-linux-x64-5.14.2.run
+
+    - name: Install Qt from .run file
+      run: |
+        ./qt-opensource-linux-x64-5.14.2.run --script qt-installer-noninteractive.qs
 
     - name: Set up Qt environment
       run: |
