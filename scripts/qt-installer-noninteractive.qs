@@ -53,11 +53,8 @@ Controller.prototype.FinishedPageCallback = function() {
     gui.clickButton(buttons.FinishButton, 1000);
 }
 
+// 헤들리스 플랫폼 플러그인을 사용하도록 설정
 Controller.prototype.ConsoleInstallationPageCallback = function() {
-    gui.clickButton(buttons.NextButton, 1000);
-}
-
-// 다음 라인을 추가하여 headless 모드를 활성화합니다.
-Controller.prototype.ConsoleInstallationPageCallback = function() {
+    gui.currentPageWidget().TargetDirectoryLineEdit.setText(installer.value("TargetDir"));
     gui.clickButton(buttons.NextButton, 1000);
 }
