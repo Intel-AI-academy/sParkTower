@@ -26,6 +26,11 @@ jobs:
         gsutil cp gs://github_action/qt-opensource-linux-x64-5.14.2.run .
         chmod +x qt-opensource-linux-x64-5.14.2.run
 
+    - name: Install required libraries
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libxkbcommon-x11-0
+
     - name: Install Qt from .run file
       run: |
         ./qt-opensource-linux-x64-5.14.2.run --script qt-installer-noninteractive.qs
