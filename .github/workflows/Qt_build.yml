@@ -1,4 +1,4 @@
-name: Build sParking with Google Cloud Storage
+name: Build and Run test about sParking with Google Cloud Storage
 
 on:
   push:
