@@ -1,4 +1,4 @@
-name: Build sParking with Samba Qt Installer
+name: Build sParking with Google Cloud Storage
 
 on:
   push:
@@ -16,17 +16,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Samba Client
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y smbclient
+    - name: Set up Google Cloud CLI
+      uses: google-github-actions/setup-gcloud@v0.2.0
+      with:
+        service_account_key: ${{ secrets.GOOGLE_CLOUD_KEY }}
 
-    - name: Download Qt Installer from Samba Share
+    - name: Download File from Google Cloud Storage
       run: |
-        smbclient //10.10.141.46/share -U ${{ secrets.SMB_USERNAME }}%${{ secrets.SMB_PASSWORD }} -c 'get qt-opensource-linux-x64-5.14.2.run' -d 3`
-
-    - name: Make Qt Installer Executable
-      run: chmod +x qt-opensource-linux-x64-5.14.2.run
+        gsutil cp gs://github_action/qt-opensource-linux-x64-5.14.2.run .
+        chmod +x qt-opensource-linux-x64-5.14.2.run
 
     - name: Install Qt from .run file
       run: |
