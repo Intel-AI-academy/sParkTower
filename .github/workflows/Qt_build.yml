@@ -23,7 +23,7 @@ jobs:
 
     - name: Download Qt Installer from Samba Share
       run: |
-        smbclient //10.10.141.46/share -U ${{ secrets.SMB_USERNAME }}%${{ secrets.SMB_PASSWORD }} -c 'get qt-opensource-linux-x64-5.14.2.run'
+        smbclient //10.10.141.46/share -U ${{ secrets.SMB_USERNAME }}%${{ secrets.SMB_PASSWORD }} -c 'get qt-opensource-linux-x64-5.14.2.run' -d 3`
 
     - name: Make Qt Installer Executable
       run: chmod +x qt-opensource-linux-x64-5.14.2.run
