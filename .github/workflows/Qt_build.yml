@@ -33,7 +33,7 @@ jobs:
 
     - name: Install Qt from .run file
       run: |
-        ./qt-opensource-linux-x64-5.14.2.run --script qt-installer-noninteractive.qs
+        ./qt-opensource-linux-x64-5.14.2.run --script scripts/qt-installer-noninteractive.qs
 
     - name: Set up Qt environment
       run: |
