@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::GarageManagerDialog *ui;
+
+private slots:
+    void close_dialog();
 };
 
 #endif // GARAGEMANAGERDIALOG_H

@@ -7,6 +7,13 @@ ChargeManagerDialog::ChargeManagerDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    connect(ui->back_button, SIGNAL(clicked()), this, SLOT(close_dialog()));
+
+}
+
+void ChargeManagerDialog::close_dialog()
+{
+    close();
 }
 
 ChargeManagerDialog::~ChargeManagerDialog()
