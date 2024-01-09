@@ -3,8 +3,12 @@
 
 #include <QWidget>
 #include <QStackedWidget>
+
 #include "usermodeui.h"
 #include "managermodeui.h"
+#include "managerpasswordui.h"
+#include "registerdialog.h"
+#include "paymentui.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,13 +26,18 @@ public:
 private:
     Ui::MainUI *ui;
     UserModeUI *p_usermode;
-    ManagerModeUI *p_managerMode;
+    ManagerModeUI *p_managermode;
+    ManagerPasswordUI *p_managerpasswordui;
+    RegisterDialog *p_registerdialog;
+    PaymentUI *p_paymentui;
 
 private slots:
-    void push_usermode();
-    void push_managermode();
-    void push_usermode_back();
-    void push_managermode_back();
+    void move_user_view();
+    void move_back();
+    void move_payment_view();
+    void move_manager_view();
+    void show_manager_pw_view();
+    void show_register_dialog_view();
 
 
 };
