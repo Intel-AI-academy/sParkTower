@@ -36,7 +36,6 @@ private slots:
     void move_back();
     void move_payment_view();
     void move_manager_view();
-
     void show_manager_pw_view();
     void show_register_dialog_view();
 
