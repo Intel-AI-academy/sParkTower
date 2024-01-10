@@ -16,26 +16,40 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    car.cpp \
+    charge.cpp \
     chargemanagerdialog.cpp \
+    charginginfo.cpp \
+    garage.cpp \
     garagemanagerdialog.cpp \
     main.cpp \
     mainui.cpp \
     managermodeui.cpp \
     managerpasswordui.cpp \
+    parkinginfo.cpp \
+    parkinglog.cpp \
     paymentdialog.cpp \
     paymentui.cpp \
     registerdialog.cpp \
+    timer.cpp \
     usermodeui.cpp
 
 HEADERS += \
+    car.h \
+    charge.h \
     chargemanagerdialog.h \
+    charginginfo.h \
+    garage.h \
     garagemanagerdialog.h \
     mainui.h \
     managermodeui.h \
     managerpasswordui.h \
+    parkinginfo.h \
+    parkinglog.h \
     paymentdialog.h \
     paymentui.h \
     registerdialog.h \
+    timer.h \
     usermodeui.h
 
 FORMS += \
