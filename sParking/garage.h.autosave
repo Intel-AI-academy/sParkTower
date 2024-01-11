@@ -1,0 +1,32 @@
+#ifndef GARAGE_H
+#define GARAGE_H
+#include "car.h"
+
+class Garage
+{
+public:
+    Garage();
+
+    ~Garage();
+
+    Car get_car();
+
+    void set_car(const Car& new_car);
+
+    int get_garage_number();
+
+    void set_garage_number(int new_garage_number);
+
+    bool is_available();
+
+    void set_available(bool new_available);
+
+private:
+    int garage_number;
+
+    bool available;
+
+    Car car;
+};
+
+#endif // GARAGE_H
