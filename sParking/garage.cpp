@@ -18,6 +18,7 @@ Car Garage::get_car() {
 void Garage::set_car(const Car& newCar) {
 
         car = newCar;
+
 }
 
 int Garage::get_garage_number() {

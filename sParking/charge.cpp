@@ -28,4 +28,5 @@ int Charge::get_charging_fee() {
 void Charge::set_charging_fee(int newChargingFee) {
 
         charging_fee = newChargingFee;
+
 }

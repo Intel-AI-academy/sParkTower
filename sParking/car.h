@@ -27,6 +27,7 @@ public:
     void set_state(bool new_state);
 
 private:
+
     std::string car_number, phone_number, garage_number;
     bool state;
 

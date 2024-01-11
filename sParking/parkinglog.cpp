@@ -13,6 +13,7 @@ ParkingLog::~ParkingLog()
 std::string ParkingLog::get_date() {
 
         return date;
+
 }
 
 void ParkingLog::set_date(const std::string& newDate) {

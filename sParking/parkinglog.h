@@ -31,6 +31,7 @@ public:
     void set_parking_time(int new_parking_time);
 
 private:
+
     std::string date, car_number;
     double parking_charge, charging_charge;
     int parking_time, charging_time;

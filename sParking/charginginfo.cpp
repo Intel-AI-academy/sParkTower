@@ -18,6 +18,7 @@ int ChargingInfo::get_total_space() {
 int ChargingInfo::get_occupied_space() {
 
         return occupied_space;
+
 }
 
 int ChargingInfo::get_available_space() {

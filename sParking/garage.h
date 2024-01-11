@@ -22,11 +22,11 @@ public:
     void set_available(bool newAvailable);
 
 private:
+
     int garage_number;
-
     bool available;
-
     Car car;
+
 };
 
 #endif // GARAGE_H
