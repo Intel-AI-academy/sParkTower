@@ -48,4 +48,5 @@ bool Car::is_parking_state() {
 void Car::set_state(bool new_state) {
 
         state = new_state;
+
 }

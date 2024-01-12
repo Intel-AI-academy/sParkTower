@@ -17,13 +17,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     car.cpp \
-    car.cpp \
-    charge.cpp \
     charge.cpp \
     chargemanagerdialog.cpp \
     charginginfo.cpp \
-    charginginfo.cpp \
-    garage.cpp \
     garage.cpp \
     garagemanagerdialog.cpp \
     main.cpp \
@@ -31,8 +27,6 @@ SOURCES += \
     managermodeui.cpp \
     managerpasswordui.cpp \
     parkinginfo.cpp \
-    parkinginfo.cpp \
-    parkinglog.cpp \
     parkinglog.cpp \
     paymentdialog.cpp \
     paymentui.cpp \
@@ -41,21 +35,15 @@ SOURCES += \
 
 HEADERS += \
     car.h \
-    car.h \
-    charge.h \
     charge.h \
     chargemanagerdialog.h \
     charginginfo.h \
-    charginginfo.h \
-    garage.h \
     garage.h \
     garagemanagerdialog.h \
     mainui.h \
     managermodeui.h \
     managerpasswordui.h \
     parkinginfo.h \
-    parkinginfo.h \
-    parkinglog.h \
     parkinglog.h \
     paymentdialog.h \
     paymentui.h \

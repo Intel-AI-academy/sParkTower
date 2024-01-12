@@ -23,9 +23,7 @@ public:
 
 private:
     int garage_number;
-
     bool available;
-
     Car car;
 };
 
