@@ -10,35 +10,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Set up Google Cloud CLI
-      uses: google-github-actions/setup-gcloud@v0.2.0
-      with:
-        service_account_key: ${{ secrets.GOOGLE_CLOUD_KEY }}
-
-    - name: Download File from Google Cloud Storage
-      run: |
-        gsutil cp gs://github_action/qt-opensource-linux-x64-5.14.2.run .
-        chmod +x qt-opensource-linux-x64-5.14.2.run
-
-    - name: Install required libraries
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y libxkbcommon-x11-0
-
-    - name: Install Qt from .run file
-      run: |
-        ./qt-opensource-linux-x64-5.14.2.run --script scripts/qt-installer-noninteractive.qs
-
-    - name: Set up Qt environment
-      run: |
-        echo 'export PATH=$HOME/Qt/5.14.2/gcc_64/bin:$PATH' >> $HOME/.bashrc
-        source $HOME/.bashrc
 
     - name: Build sParking with qmake and make
       run: |

@@ -33,7 +33,6 @@ void Car::set_phone_number(const std::string& new_phone_number) {
 std::string Car::get_garage_number() {
 
         return garage_number;
-
 }
 
 void Car::set_garage_number(const std::string& new_garage_number) {

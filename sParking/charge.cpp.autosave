@@ -15,9 +15,9 @@ int Charge::get_parking_fee() {
         return parking_fee;
 }
 
-void Charge::set_parking_fee(int newParkingFee) {
+void Charge::set_parking_fee(int new_parking_fee) {
 
-        parking_fee = newParkingFee;
+        parking_fee = new_parking_fee;
 }
 
 int Charge::get_charging_fee() {
@@ -25,7 +25,7 @@ int Charge::get_charging_fee() {
         return charging_fee;
 }
 
-void Charge::set_charging_fee(int newChargingFee) {
+void Charge::set_charging_fee(int new_charging_fee) {
 
-        charging_fee = newChargingFee;
+        charging_fee = new_charging_fee;
 }
