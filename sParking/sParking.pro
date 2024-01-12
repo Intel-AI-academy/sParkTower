@@ -31,7 +31,6 @@ SOURCES += \
     paymentdialog.cpp \
     paymentui.cpp \
     registerdialog.cpp \
-    timer.cpp \
     usermodeui.cpp
 
 HEADERS += \
@@ -49,7 +48,6 @@ HEADERS += \
     paymentdialog.h \
     paymentui.h \
     registerdialog.h \
-    timer.h \
     usermodeui.h
 
 FORMS += \
