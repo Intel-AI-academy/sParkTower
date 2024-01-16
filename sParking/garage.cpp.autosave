@@ -12,11 +12,10 @@ Garage::~Garage()
 
 Car Garage::get_car() {
 
-
         return car;
 }
 
-void Garage::set_car(const Car& newCar) {
+void Garage::set_car(const Car& new_car) {
 
         car = newCar;
 }
@@ -26,9 +25,9 @@ int Garage::get_garage_number() {
         return garage_number;
 }
 
-void Garage::set_garage_number(int newGarageNumber) {
+void Garage::set_garage_number(int new_garage_number) {
 
-        garage_number = newGarageNumber;
+        garage_number = new_garage_number;
 }
 
 bool Garage::is_available() {
@@ -36,7 +35,7 @@ bool Garage::is_available() {
         return available;
 }
 
-void Garage::set_available(bool newAvailable) {
+void Garage::set_available(bool new_available) {
 
-        available = newAvailable;
+        available = new_available;
 }

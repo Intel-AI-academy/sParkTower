@@ -14,7 +14,6 @@ ParkingInfo::~ParkingInfo()
 int ParkingInfo::get_total_space() {
 
         return total_space;
-
 }
 
 int ParkingInfo::get_occupied_space() {
