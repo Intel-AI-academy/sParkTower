@@ -48,7 +48,7 @@ private slots:
     void show_register_dialog_view();
     void connectToServerSlot(bool);
 
-    void send_in_time(QString);
+    void recv_data_from_usermode(QString);
 
 };
 #endif // MAINUI_H

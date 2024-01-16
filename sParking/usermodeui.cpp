@@ -7,6 +7,12 @@ UserModeUI::UserModeUI(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    for(i=0;i<2;i++)
+    {
+        charging_slot[i] = 0;
+        parking_slot[i] = 0;
+    }
+
     connect(ui->back_button, SIGNAL(clicked()), this, SLOT(push_back_button()));
     connect(ui->number0, SIGNAL(clicked()), this, SLOT(input_key()));
     connect(ui->number1, SIGNAL(clicked()), this, SLOT(input_key()));
@@ -22,6 +28,7 @@ UserModeUI::UserModeUI(QWidget *parent) :
     connect(ui->check_button, SIGNAL(clicked()), this, SLOT(input_key()));
 
     output_text = "";
+    send_data = "";
     check_num = 0;
 }
 
@@ -74,29 +81,81 @@ void UserModeUI::input_key()
 */
     if(input_text == "Check")
     {
-
-
         carnum_temp = ui->carnum_text->text();
         phonenum_temp = ui->phonenum_text->text();
+        compare();
+    }
+}
 
-        //p_InfoDatabase->user_data(carnum_temp);
-        //p_InfoDatabase->user_data(phonenum_temp);
-
-        if(carnum_temp == "1" && phonenum_temp == "1")
+void UserModeUI::compare()
+{
+    QString carnum_temp = ui->carnum_text->text();
+    QString phonenum_temp = ui->phonenum_text->text();
+    int row_count = 0;
+    QString recv_data = "";
+    QString str_query = "select * from parking_log_tb where charge_check == 'x'";
+    QSqlQuery sql_query;
+    if(!sql_query.exec(str_query))
+        ;
+    else
+    {
+        while (sql_query.next())
         {
-            // open payment
-            input_time = QDateTime::currentDateTime();
-            QString temp_time = input_time.toString();
-            emit move_to_payment();
-            emit in_time(temp_time);
+            recv_data = sql_query.value("car_slot_num").toString();
+            recv_data += '@';
+            recv_data += sql_query.value("car_num").toString();
+            recv_data += '@';
+            recv_data += sql_query.value("phone_num").toString();
+            recv_data += '@';
+            recv_data += sql_query.value("input_time").toString();
+            recv_data += '@';
+            recv_data += sql_query.value("output_time").toString();
+            recv_data += '@';
+            recv_data += sql_query.value("charge_check").toString();
+            QStringList qlist = recv_data.split('@');
+            if(qlist[1] == carnum_temp && qlist[2] == phonenum_temp)
+            {
+                // open payment
+                emit move_to_payment();
+                row_count++;
+            }
+            recv_data = "";
         }
-        else
+        if(!row_count)
         {
             // open registration
             emit move_to_registrationcar();
         }
     }
+}
 
+void UserModeUI::register_car()
+{
+    QString time_format = "yyyy/MM/dd HH:mm:ss";
+    temp_time = QDateTime::currentDateTime();
+    QString input_time = temp_time.toString(time_format);
+
+    for(i=0;i<2;i++)
+    {
+        if(charging_slot[i] == 0)
+        {
+            send_data = QString::number(i+1);
+            send_data += '@';
+            charging_slot[i] = 1;
+            break;
+        }
+    }
+    send_data += ui->carnum_text->text();
+    send_data += '@';
+    send_data += ui->phonenum_text->text();
+    send_data += '@';
+    send_data += input_time;
+    send_data += '@';
+    send_data += "null";
+    send_data += '@';
+    send_data += 'x';
+    qDebug() << send_data;
+    emit send_data_to_db(send_data);
 }
 
 UserModeUI::~UserModeUI()

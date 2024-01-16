@@ -6,10 +6,10 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QSql>
 #include <QDebug>
 #include <QDate>
 #include <QTime>
-#include <QDebug>
 
 class InfoDatabase : public QWidget
 {
@@ -20,20 +20,22 @@ public:
 
     ~InfoDatabase();
 
-    void user_data(QString);
+    void send_data();
 
     void soket_data(QString);
 
     void RecvUpdateSlot(QString);
 
-    void in_out_time(QString);
+    void recv_data(QString);
 
 private:
     //UserModeUI *p_usermode;
+    QSqlDatabase qsqldatabase;
 
 signals:
     void RecvDataSig_garage(QString);
     void RecvDataSig_pay(QString);
+    void send_data_from_db(QString);
 
     //void x_sig(QString);
     //void y_sig(QString);

@@ -19,6 +19,7 @@ void RegisterDialog::close_dialog()
 
 void RegisterDialog::show_register_box()
 {
+    emit register_car();
     register_msg.setText("Register Success");
     register_msg.exec();
 }

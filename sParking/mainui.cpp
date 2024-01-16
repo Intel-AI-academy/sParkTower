@@ -29,7 +29,9 @@ MainUI::MainUI(QWidget *parent)
     connect(p_usermode, SIGNAL(move_to_payment()), this, SLOT(move_payment_view()));
     connect(p_paymentui, SIGNAL(push_back()), this, SLOT(move_user_view()));
 
-    connect(p_usermode, SIGNAL(in_time(QString)), this, SLOT(send_in_time(QString)));
+    connect(p_usermode, SIGNAL(send_data_to_db(QString)), this, SLOT(recv_data_from_usermode(QString)));
+
+    connect(p_registerdialog, SIGNAL(register_car()), p_usermode, SLOT(register_car()));
 
     connectToServerSlot(bCheck);
 }
@@ -37,13 +39,13 @@ MainUI::MainUI(QWidget *parent)
 void MainUI::connectToServerSlot(bool bCheck)
 {
     p_SocketClient->slotConnectToServer(bCheck);
-    if(bCheck)
+    if(!bCheck)
     {
-        qDebug() << "server connect";
+        qDebug() << "no connect";
     }
     else
     {
-        qDebug() << "no connect";
+        qDebug() << "server connect";
     }
 
 }
@@ -67,10 +69,11 @@ void MainUI::show_register_dialog_view(){
     p_registerdialog->show();
 }
 
-void MainUI::send_in_time(QString recv_time)
+void MainUI::recv_data_from_usermode(QString recv_data)
 {
-    p_infodatabase->in_out_time(recv_time);
+    p_infodatabase->recv_data(recv_data);
 }
+
 
 
 

@@ -15,8 +15,8 @@ ManagerModeUI::ManagerModeUI(QWidget *parent) :
     connect(ui->charge_manager_button, SIGNAL(clicked()), this, SLOT(show_payment_manager_view()));
     connect(ui->garage_manager_button, SIGNAL(clicked()), this, SLOT(show_garage_view()));
 
-    connect(p_infodatabase, SIGNAL(RecvDataSig_garage()), this, SLOT(soket_data));
-    connect(p_infodatabase, SIGNAL(RecvDataSig_pay()), this, SLOT(soket_data));
+    //connect(p_infodatabase, SIGNAL(RecvDataSig_garage()), this, SLOT(soket_data));
+    //connect(p_infodatabase, SIGNAL(RecvDataSig_pay()), this, SLOT(soket_data));
 
 }
 
