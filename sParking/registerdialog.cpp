@@ -14,6 +14,7 @@ RegisterDialog::RegisterDialog(QWidget *parent) :
 void RegisterDialog::close_dialog()
 {
     close();
+
 }
 
 void RegisterDialog::show_register_box()

@@ -21,6 +21,7 @@ private:
     QMessageBox register_msg;
 
 private slots:
+
     void close_dialog();
     void show_register_box();
 };

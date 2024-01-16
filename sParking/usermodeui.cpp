@@ -8,7 +8,6 @@ UserModeUI::UserModeUI(QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->back_button, SIGNAL(clicked()), this, SLOT(push_back_button()));
-
     connect(ui->number0, SIGNAL(clicked()), this, SLOT(input_key()));
     connect(ui->number1, SIGNAL(clicked()), this, SLOT(input_key()));
     connect(ui->number2, SIGNAL(clicked()), this, SLOT(input_key()));
@@ -19,7 +18,6 @@ UserModeUI::UserModeUI(QWidget *parent) :
     connect(ui->number7, SIGNAL(clicked()), this, SLOT(input_key()));
     connect(ui->number8, SIGNAL(clicked()), this, SLOT(input_key()));
     connect(ui->number9, SIGNAL(clicked()), this, SLOT(input_key()));
-
     connect(ui->cancel_button, SIGNAL(clicked()), this, SLOT(input_key()));
     connect(ui->check_button, SIGNAL(clicked()), this, SLOT(input_key()));
 
@@ -41,7 +39,6 @@ void UserModeUI::input_key()
 
     QPushButton *button = (QPushButton *)sender();
     QString input_text = button->text();
-
     QString carnum_temp;
     QString phonenum_temp;
 /*
@@ -77,12 +74,21 @@ void UserModeUI::input_key()
 */
     if(input_text == "Check")
     {
+
+
         carnum_temp = ui->carnum_text->text();
         phonenum_temp = ui->phonenum_text->text();
+
+        //p_InfoDatabase->user_data(carnum_temp);
+        //p_InfoDatabase->user_data(phonenum_temp);
+
         if(carnum_temp == "1" && phonenum_temp == "1")
         {
             // open payment
+            input_time = QDateTime::currentDateTime();
+            QString temp_time = input_time.toString();
             emit move_to_payment();
+            emit in_time(temp_time);
         }
         else
         {

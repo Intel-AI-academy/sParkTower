@@ -9,9 +9,7 @@
 #include <QDebug>
 #include <QDate>
 #include <QTime>
-#include "socketclient.h"
-#include "managermodeui.h"
-#include "usermode.h"
+#include <QDebug>
 
 class InfoDatabase : public QWidget
 {
@@ -31,9 +29,7 @@ public:
     void in_out_time(QString);
 
 private:
-    SocketClient *p_SocketClient;
-    //UserModeUI *p_usermodeui;
-    UserMode *p_UserMode;
+    //UserModeUI *p_usermode;
 
 signals:
     void RecvDataSig_garage(QString);

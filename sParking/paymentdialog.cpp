@@ -13,6 +13,7 @@ PaymentDialog::PaymentDialog(QWidget *parent) :
 void PaymentDialog::close_dialog()
 {
     close();
+
 }
 
 void PaymentDialog::show_payment_msg()

@@ -24,7 +24,6 @@ public:
     void dec_available_space();
 
 private:
-
     int total_space, occupied_space, available_space;
 };
 

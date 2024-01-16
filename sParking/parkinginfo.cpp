@@ -8,6 +8,7 @@ ParkingInfo::ParkingInfo()
 ParkingInfo::~ParkingInfo()
 {
 
+
 }
 
 int ParkingInfo::get_total_space() {

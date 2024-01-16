@@ -8,6 +8,7 @@ ParkingLog::ParkingLog()
 ParkingLog::~ParkingLog()
 {
 
+
 }
 
 std::string ParkingLog::get_date() {

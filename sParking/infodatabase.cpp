@@ -3,20 +3,19 @@
 InfoDatabase::InfoDatabase(QWidget *parent) :
     QWidget (parent)
 {
-//    p_SocketClient = new SocketClient;
+
     //p_usermodeui = new UserModeUI;
-    //p_UserMode = new UserMode;
+    //p_usermode = new UserModeUI;
 
 
 //    connect(p_SocketClient, SIGNAL(sigSocketRecv(QString)), this, SLOT(RecvUpdateSlot(QString)));
     //connect(this, SIGNAL(x_sig(QString)), p_ManagerModeUI, SLOT(soket_data(QString)));
     //connect(this, SIGNAL(time_sig(QString)), this, SLOT(RecvUpdateSlot(QString)));
-    connect(p_UserMode, SIGNAL(in_time()), this, SLOT(in_out_time(QString)));
+    //connect(p_usermode, SIGNAL(in_time(QString)), this, SLOT(in_out_time(QString)));
 }
 
-void InfoDatabase::in_out_time(QString){
-
-
+void InfoDatabase::in_out_time(QString recv_time){
+    qDebug() << recv_time;
 }
 
 void InfoDatabase::user_data(QString user_data)

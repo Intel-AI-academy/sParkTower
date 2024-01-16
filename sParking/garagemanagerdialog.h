@@ -16,6 +16,7 @@ public:
     ~GarageManagerDialog();
 
 private:
+
     Ui::GarageManagerDialog *ui;
 
 private slots:

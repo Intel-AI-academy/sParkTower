@@ -18,7 +18,6 @@ public:
     void set_charging_fee(int new_charging_fee);
 
 private:
-
     int parking_fee, charging_fee;
 };
 
