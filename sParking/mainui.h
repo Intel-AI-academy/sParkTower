@@ -9,7 +9,8 @@
 #include "managerpasswordui.h"
 #include "registerdialog.h"
 #include "paymentui.h"
-
+#include "socketclient.h"
+#include "infodatabase.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainUI; }
@@ -30,6 +31,13 @@ private:
     ManagerPasswordUI *p_managerpasswordui;
     RegisterDialog *p_registerdialog;
     PaymentUI *p_paymentui;
+    SocketClient *p_SocketClient;
+    InfoDatabase *p_infodatabase;
+
+    bool bCheck = true;
+
+signals:
+    void connected(bool=false);
 
 private slots:
     void move_user_view();
@@ -38,7 +46,9 @@ private slots:
     void move_manager_view();
     void show_manager_pw_view();
     void show_register_dialog_view();
+    void connectToServerSlot(bool);
 
+    void recv_data_from_usermode(QString);
 
 };
 #endif // MAINUI_H

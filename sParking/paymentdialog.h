@@ -17,6 +17,7 @@ public:
     ~PaymentDialog();
 
 private:
+
     Ui::PaymentDialog *ui;
     QMessageBox payment_msg;
 private slots:

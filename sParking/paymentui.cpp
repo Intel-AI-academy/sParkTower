@@ -15,6 +15,7 @@ PaymentUI::PaymentUI(QWidget *parent) :
 void PaymentUI::push_back_button()
 {
     emit push_back();
+
 }
 
 void PaymentUI::show_pay_dialog_view()

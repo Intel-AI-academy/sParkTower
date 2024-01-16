@@ -6,7 +6,6 @@ ManagerPasswordUI::ManagerPasswordUI(QWidget *parent) :
     ui(new Ui::ManagerPasswordUI)
 {
     ui->setupUi(this);
-
     connect(ui->back_button, SIGNAL(clicked()), this, SLOT(move_back()));
     connect(ui->check_button, SIGNAL(clicked()), this, SLOT(move_manager_view()));
 }

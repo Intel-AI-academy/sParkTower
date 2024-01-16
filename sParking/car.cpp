@@ -37,6 +37,7 @@ std::string Car::get_garage_number() {
 
 void Car::set_garage_number(const std::string& new_garage_number) {
 
+
         garage_number = new_garage_number;
 }
 

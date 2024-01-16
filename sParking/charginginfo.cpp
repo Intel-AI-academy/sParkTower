@@ -12,6 +12,7 @@ ChargingInfo::~ChargingInfo()
 
 int ChargingInfo::get_total_space() {
 
+
         return total_space;
 }
 

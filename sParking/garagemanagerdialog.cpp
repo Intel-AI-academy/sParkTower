@@ -12,6 +12,7 @@ GarageManagerDialog::GarageManagerDialog(QWidget *parent) :
 
 void GarageManagerDialog::close_dialog()
 {
+
     close();
 }
 

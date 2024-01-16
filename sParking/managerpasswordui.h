@@ -17,6 +17,7 @@ public:
     ~ManagerPasswordUI();
 
 signals:
+
     void manager_view();
 
 private:

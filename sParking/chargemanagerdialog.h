@@ -19,6 +19,7 @@ private:
     Ui::ChargeManagerDialog *ui;
 
 private slots:
+
     void close_dialog();
 };
 

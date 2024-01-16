@@ -18,6 +18,7 @@ public:
 signals:
     void push_back();
 private:
+
     Ui::PaymentUI *ui;
     PaymentDialog *p_paymentdialog;
 private slots:

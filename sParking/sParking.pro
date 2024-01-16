@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -22,6 +22,7 @@ SOURCES += \
     charginginfo.cpp \
     garage.cpp \
     garagemanagerdialog.cpp \
+    infodatabase.cpp \
     main.cpp \
     mainui.cpp \
     managermodeui.cpp \
@@ -31,6 +32,7 @@ SOURCES += \
     paymentdialog.cpp \
     paymentui.cpp \
     registerdialog.cpp \
+    socketclient.cpp \
     usermodeui.cpp
 
 HEADERS += \
@@ -40,6 +42,7 @@ HEADERS += \
     charginginfo.h \
     garage.h \
     garagemanagerdialog.h \
+    infodatabase.h \
     mainui.h \
     managermodeui.h \
     managerpasswordui.h \
@@ -48,6 +51,7 @@ HEADERS += \
     paymentdialog.h \
     paymentui.h \
     registerdialog.h \
+    socketclient.h \
     usermodeui.h
 
 FORMS += \

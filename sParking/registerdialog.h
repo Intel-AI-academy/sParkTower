@@ -19,8 +19,11 @@ public:
 private:
     Ui::RegisterDialog *ui;
     QMessageBox register_msg;
+signals:
+    void register_car();
 
 private slots:
+
     void close_dialog();
     void show_register_box();
 };

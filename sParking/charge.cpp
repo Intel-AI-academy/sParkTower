@@ -17,6 +17,7 @@ int Charge::get_parking_fee() {
 
 void Charge::set_parking_fee(int newParkingFee) {
 
+
         parking_fee = newParkingFee;
 }
 

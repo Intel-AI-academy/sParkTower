@@ -28,6 +28,7 @@ public:
 
 private:
     std::string car_number, phone_number, garage_number;
+
     bool state;
 
 };
