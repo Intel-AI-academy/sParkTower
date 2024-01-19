@@ -18,6 +18,7 @@ public:
 private:
     cv::VideoCapture cap;
     //pthread_t threadId;
+    std::string receiver = "[YSK_STM]";
 
     void detectChargingport(cv::Mat& frame);
 };

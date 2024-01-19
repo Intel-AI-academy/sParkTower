@@ -107,7 +107,7 @@ void ChargingportDetector::detectChargingport(cv::Mat& frame) {
 	// 수평 방향 스텝모터 제어
 	if (distanceX > 100) {
             statusX = "far";
-	    g_msg = "[YSK_QT]move@X\n";
+	    g_msg = this->receiver+"move@X\n";
 	    if(distanceY > 100) {
 		statusY = "far";
 	    }
@@ -119,7 +119,7 @@ void ChargingportDetector::detectChargingport(cv::Mat& frame) {
         }
         else if (distanceX > 20) {
             statusX = "close";
-	    g_msg = "[YSK_QT]move@X\n";
+	    g_msg = this->receiver+"move@X\n";
 	    if(distanceY > 100) {
 		statusY = "far";
 	    }
@@ -133,28 +133,15 @@ void ChargingportDetector::detectChargingport(cv::Mat& frame) {
             statusX = "match";
 	    if(distanceY > 100) {
 		statusY = "far";
-		g_msg = "[YSK_QT]move@Y\n";
+		g_msg = this->receiver+"move@Y\n";
 	    }
 	    else if (distanceY > 20) {
 		statusY = "close";
-		g_msg = "[YSK_QT]move@Y\n";
+		g_msg = this->receiver+"move@Y\n";
 	    }
 	    else
 		statusY = "match";
         }
-
-	/*
-	// 수직 방향 스텝모터 제어
-        if (distanceY > 100) {
-            statusY = "far";
-        }
-        else if (distanceY > 20) {
-            statusY = "close";
-        }
-        else {
-            statusY = "match";
-        }
-	*/
 
         // 텍스트를 화면에 추가
         cv::putText(frame, "status (X): " + statusX, cv::Point(10, 30), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2);
