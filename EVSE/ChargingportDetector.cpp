@@ -18,7 +18,7 @@ void ChargingportDetector::run() {
         if (frame.empty())
             break;
 
-        processFrame(frame);
+        detectChargingport(frame);
 
         cv::imshow("result", frame);
 
@@ -27,7 +27,22 @@ void ChargingportDetector::run() {
     }
 }
 
-void ChargingportDetector::processFrame(cv::Mat& frame) {
+void* ChargingportDetector::DetectPortThread(void* arg) {
+    ChargingportDetector* detector = static_cast<ChargingportDetector*>(arg);
+    detector->run();
+    return nullptr;
+}
+/*
+void ChargingportDetector::startThread() {
+    pthread_create(&threadId, nullptr, &ChargingportDetector::threadFunction, this);
+}
+
+void ChargingportDetector::joinThread() {
+    pthread_join(threadId, nullptr);
+}
+*/
+
+void ChargingportDetector::detectChargingport(cv::Mat& frame) {
 
 
     // 그레이 스케일로 변환
@@ -87,20 +102,59 @@ void ChargingportDetector::processFrame(cv::Mat& frame) {
 
         // 거리에 따른 상태 텍스트 설정
         std::string statusX, statusY;
+	g_msg = "";
 
-        if (distanceX > 100)
+	// 수평 방향 스텝모터 제어
+	if (distanceX > 100) {
             statusX = "far";
-        else if (distanceX < 20)
-            statusX = "match";
-        else
+	    g_msg = "[YSK_QT]move@X\n";
+	    if(distanceY > 100) {
+		statusY = "far";
+	    }
+	    else if (distanceY > 20) {
+		statusY = "close";
+	    }
+	    else
+		statusY = "match";
+        }
+        else if (distanceX > 20) {
             statusX = "close";
+	    g_msg = "[YSK_QT]move@X\n";
+	    if(distanceY > 100) {
+		statusY = "far";
+	    }
+	    else if (distanceY > 20) {
+		statusY = "close";
+	    }
+	    else
+		statusY = "match";
+        }
+        else {
+            statusX = "match";
+	    if(distanceY > 100) {
+		statusY = "far";
+		g_msg = "[YSK_QT]move@Y\n";
+	    }
+	    else if (distanceY > 20) {
+		statusY = "close";
+		g_msg = "[YSK_QT]move@Y\n";
+	    }
+	    else
+		statusY = "match";
+        }
 
-        if (distanceY > 100)
+	/*
+	// 수직 방향 스텝모터 제어
+        if (distanceY > 100) {
             statusY = "far";
-        else if (distanceY < 20)
-            statusY = "match";
-        else
+        }
+        else if (distanceY > 20) {
             statusY = "close";
+        }
+        else {
+            statusY = "match";
+        }
+	*/
 
         // 텍스트를 화면에 추가
         cv::putText(frame, "status (X): " + statusX, cv::Point(10, 30), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2);

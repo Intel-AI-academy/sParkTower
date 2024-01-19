@@ -3,6 +3,7 @@
 
 #include <opencv2/opencv.hpp>
 #include <string>
+#include "GlobalVariables.h"
 
 class ChargingportDetector {
 public:
@@ -10,11 +11,15 @@ public:
     ~ChargingportDetector();
 
     void run();
+    //void startThread();
+    //void joinThread();
+    static void* DetectPortThread(void* arg);
 
 private:
     cv::VideoCapture cap;
+    //pthread_t threadId;
 
-    void processFrame(cv::Mat& frame);
+    void detectChargingport(cv::Mat& frame);
 };
 
 #endif // CHARGINGPORT_DETECTOR_H
