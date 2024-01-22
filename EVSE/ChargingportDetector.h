@@ -5,6 +5,8 @@
 #include <string>
 #include "GlobalVariables.h"
 
+#define DEBUG
+
 class ChargingportDetector {
 public:
     ChargingportDetector();
@@ -14,6 +16,12 @@ public:
     //void startThread();
     //void joinThread();
     static void* DetectPortThread(void* arg);
+    static bool find_flag;
+    static bool exti_flag;
+
+    static int count;
+    static bool updown_flag;
+    static double prevDistanceY;
 
 private:
     cv::VideoCapture cap;

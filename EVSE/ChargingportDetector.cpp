@@ -1,5 +1,10 @@
 #include "ChargingportDetector.h"
 
+bool ChargingportDetector::find_flag = false;
+bool ChargingportDetector::exti_flag = false;
+int ChargingportDetector::count = 1000;
+bool ChargingportDetector::updown_flag = false;
+double ChargingportDetector::prevDistanceY = 100.0;
 ChargingportDetector::ChargingportDetector() : cap(0) {
     if (!cap.isOpened()) {
         std::cerr << "Error: 카메라를 열 수 없습니다." << std::endl;
@@ -79,9 +84,25 @@ void ChargingportDetector::detectChargingport(cv::Mat& frame) {
             circleCenters.push_back(center);
         }
     }
-
+    g_msg = "";
+    if(!find_flag){
+	if(!updown_flag){
+	    g_msg = this->receiver + "find@up\n";
+	    count -= 50;
+	    if(count<=0)
+		updown_flag=false;
+	}
+	else{
+	    g_msg = this->receiver + "find@down\n";
+	    count += 50;
+	    if(count>=1000)
+		updown_flag=true;
+	}
+	if(circleCenters.size() == 5)
+	    find_flag = true;
+    }
     // 무게 중심 계산
-    if (circleCenters.size() >= 5)
+    else
     {
         cv::Point2f mc(0, 0);
         for (const auto& center : circleCenters)
@@ -97,55 +118,55 @@ void ChargingportDetector::detectChargingport(cv::Mat& frame) {
         cv::Point2f cameraCenter(frame.cols / 2, frame.rows / 2);
 
         // X 및 Y 방향 거리 계산
-        double distanceX = std::abs(mc.x - cameraCenter.x);
+        //double distanceX = std::abs(mc.x - cameraCenter.x);
         double distanceY = std::abs(mc.y - cameraCenter.y);
 
         // 거리에 따른 상태 텍스트 설정
-        std::string statusX, statusY;
-	g_msg = "";
+        //std::string statusX, statusY;
+        std::string statusY;
 
-	// 수평 방향 스텝모터 제어
-	if (distanceX > 100) {
-            statusX = "far";
-	    g_msg = this->receiver+"move@X\n";
-	    if(distanceY > 100) {
-		statusY = "far";
+	if(distanceY > this->prevDistanceY)
+	    exti_flag = !exti_flag;
+	// 수직 방향 스텝모터 제어
+	if(!exti_flag){
+	    if(distanceY > 100){
+                statusY = "far";
+		g_msg = this->receiver + "move@up\n";
 	    }
-	    else if (distanceY > 20) {
-		statusY = "close";
+	    else if(distanceY > 20){
+            	statusY = "close";
+		g_msg = this->receiver + "move@up\n";
 	    }
-	    else
+	    else {
 		statusY = "match";
-        }
-        else if (distanceX > 20) {
-            statusX = "close";
-	    g_msg = this->receiver+"move@X\n";
-	    if(distanceY > 100) {
-		statusY = "far";
+		g_msg = this->receiver + "stop\n";
 	    }
-	    else if (distanceY > 20) {
-		statusY = "close";
+	}
+	else
+	{
+	    if(distanceY > 100){
+                statusY = "far";
+		g_msg = this->receiver + "move@down\n";
 	    }
-	    else
-		statusY = "match";
-        }
-        else {
-            statusX = "match";
-	    if(distanceY > 100) {
-		statusY = "far";
-		g_msg = this->receiver+"move@Y\n";
+	    else if(distanceY > 20){
+            	statusY = "close";
+		g_msg = this->receiver + "move@down\n";
 	    }
-	    else if (distanceY > 20) {
-		statusY = "close";
-		g_msg = this->receiver+"move@Y\n";
+	    else {
+            	statusY = "match";
+		g_msg = this->receiver + "stop\n";
 	    }
-	    else
-		statusY = "match";
-        }
+	}
 
+        // 현재 거리Y 값을 저장
+        prevDistanceY = distanceY;
+	
+
+	#ifdef DEBUG
         // 텍스트를 화면에 추가
-        cv::putText(frame, "status (X): " + statusX, cv::Point(10, 30), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2);
+        //cv::putText(frame, "status (X): " + statusX, cv::Point(10, 30), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2);
         cv::putText(frame, "status (Y): " + statusY, cv::Point(10, 70), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2);
+	#endif
 
         // ROI의 크기 설정
         int roiSize = 40;
