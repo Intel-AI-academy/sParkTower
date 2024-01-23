@@ -18,6 +18,6 @@ jobs:
 
     - name: Build sParking with qmake and make
       run: |
-        cd sParking
+        cd src
         qmake
         make
