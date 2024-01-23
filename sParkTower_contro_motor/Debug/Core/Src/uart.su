@@ -1,0 +1,4 @@
+../Core/Src/uart.c:9:5:__io_putchar	16	static
+../Core/Src/uart.c:17:5:drv_uart_init	8	static
+../Core/Src/uart.c:33:5:drv_uart_rx_buffer	88	static
+../Core/Src/uart.c:90:5:drv_uart_tx_buffer	16	static
