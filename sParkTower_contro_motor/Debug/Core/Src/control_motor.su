@@ -1,0 +1,3 @@
+../Core/Src/control_motor.c:12:6:control_motor	24	static
+../Core/Src/control_motor.c:191:6:move_to_parking_slot	24	static
+../Core/Src/control_motor.c:441:6:get_out_parking_tower	24	static
