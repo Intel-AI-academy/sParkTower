@@ -15,7 +15,7 @@
 
  1. STMF429zi 
 
- image
+ ![image](https://github.com/Intel-AI-academy/sParkTower/assets/142784142/eb410268-499f-430e-94a2-5a87eb32d4e4)
 
  2. Code run
 
@@ -28,7 +28,7 @@
 
 ## Output
 
-video or image
+![image](https://github.com/Intel-AI-academy/sParkTower/assets/142784142/5c5576c9-7996-455a-a720-863c7da0fb8b)
 
 ## Participants
 
