@@ -2,7 +2,8 @@
 #ifndef CLIENT_SOCKET_H
 #define CLIENT_SOCKET_H
 
-#include <string>
+#pragma once
+
 #include "GlobalVariables.h"
 
 #define BUF_SIZE 100
